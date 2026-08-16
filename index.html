@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Para você ❤️</title>
+  <style>
+    /* Reset e base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1a0e0e; /* fallback */
+      padding: 16px;
+    }
+
+    /* Container principal com fundo imagem */
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 420px; /* largura ideal para celular */
+      background-image: url('Giselle.png'); /* ← SUBSTITUA pelo caminho da sua foto */
+      background-size: cover;
+      background-position: center;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      padding: 24px 20px 32px;
+      /* Overlay escuro para legibilidade */
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 4, 4, 0.55);
+        backdrop-filter: blur(2px);
+        z-index: 0;
+        border-radius: 32px;
+      }
+    }
+
+    /* Todo conteúdo fica acima do overlay */
+    .container > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Título romântico */
+    .titulo {
+      text-align: center;
+      color: #ffe3e3;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+      margin-bottom: 12px;
+    }
+    .titulo span {
+      display: inline-block;
+      animation: pulsar 2s infinite;
+    }
+    @keyframes pulsar {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    /* Carta */
+    .carta {
+      background: rgba(255, 245, 235, 0.92);
+      backdrop-filter: blur(4px);
+      border-radius: 20px;
+      padding: 18px 16px;
+      margin: 10px 0 18px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      max-height: 180px;
+      overflow-y: auto;
+      border-left: 4px solid #e09191;
+      color: #3d1f1f;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      transition: all 0.3s;
+    }
+    .carta::-webkit-scrollbar {
+      width: 4px;
+    }
+    .carta::-webkit-scrollbar-thumb {
+      background: #d4a0a0;
+      border-radius: 10px;
+    }
+    .carta h2 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: #a14b4b;
+    }
+    .carta p {
+      margin-bottom: 6px;
+    }
+    .carta .assinatura {
+      text-align: right;
+      font-style: italic;
+      color: #7a4a4a;
+      margin-top: 6px;
+    }
+
+    /* Grid dos botões de música */
+    .botoes-musica {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+    /* Para 5 botões, o último ocupa 2 colunas centralizado */
+    .botoes-musica .btn:nth-child(5) {
+      grid-column: 2 / 3;
+      justify-self: center;
+      width: 100%;
+    }
+
+    .btn {
+      background: rgba(255, 215, 215, 0.25);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 200, 200, 0.4);
+      border-radius: 60px;
+      padding: 12px 6px;
+      color: #fff4f0;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      line-height: 1.3;
+      min-height: 64px;
+      justify-content: center;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn .emoji {
+      font-size: 1.6rem;
+      display: block;
+    }
+    .btn .label {
+      font-size: 0.7rem;
+      opacity: 0.9;
+      letter-spacing: 0.3px;
+    }
+    .btn:active {
+      transform: scale(0.94);
+      background: rgba(255, 180, 180, 0.4);
+    }
+    .btn.tocando {
+      background: rgba(255, 120, 120, 0.5);
+      border-color: #ffb0b0;
+      box-shadow: 0 0 20px rgba(255, 100, 100, 0.3);
+    }
+
+    /* Rodapé */
+    .footer {
+      text-align: center;
+      margin-top: 18px;
+      color: rgba(255, 235, 235, 0.5);
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+    }
+
+    /* Ajustes para telas muito pequenas */
+    @media (max-width: 380px) {
+      .container { padding: 16px 12px 20px; }
+      .titulo { font-size: 1.4rem; }
+      .carta { font-size: 0.85rem; max-height: 150px; }
+      .btn { font-size: 0.75rem; min-height: 54px; padding: 8px 4px; }
+      .btn .emoji { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Título -->
+  <div class="titulo">
+    <span>🎵 Para você, com amor 🎵</span>
+  </div>
+
+  <!-- CARTA -->
+  <div class="carta" id="carta">
+    <h2>💌 Giselle,</h2>
+    <p>
+      Desde que te conheci, os dias ficaram mais leves e sorrir se tornou automático.
+      Cada momento ao seu lado é uma música que eu quero ouvir em repeat.
+      Escolhi 5 canções que traduzem o que sinto — aperte os botões e deixa o som te envolver
+      enquanto abre os demais envelopes.
+    </p>
+    <p>
+      Você é a melodia mais bonita da minha vida. ❤️
+    </p>
+    <div class="assinatura">— Com todo carinho, Igor</div>
+  </div>
+
+  <!-- Botões de música -->
+  <div class="botoes-musica">
+    <div class="btn" data-musica="musica1.mp3">
+      <span class="emoji">🎸</span>
+      <span class="label">Música 1</span>
+    </div>
+    <div class="btn" data-musica="musica2.mp3">
+      <span class="emoji">🎹</span>
+      <span class="label">Música 2</span>
+    </div>
+    <div class="btn" data-musica="musica3.mp3">
+      <span class="emoji">🎷</span>
+      <span class="label">Música 3</span>
+    </div>
+    <div class="btn" data-musica="musica4.mp3">
+      <span class="emoji">🎻</span>
+      <span class="label">Música 4</span>
+    </div>
+    <div class="btn" data-musica="musica5.mp3">
+      <span class="emoji">🎤</span>
+      <span class="label">Música 5</span>
+    </div>
+  </div>
+
+  <div class="footer">❤️ Espero que você goste das músicas ❤️</div>
+</div>
+
+<!-- Áudio oculto -->
+<audio id="player" preload="none"></audio>
+
+<script>
+  (function() {
+    const player = document.getElementById('player');
+    const botoes = document.querySelectorAll('.btn');
+    let musicaAtual = null;
+
+    // Função para tocar música
+    function tocarMusica(src, botao) {
+      // Se já está tocando a mesma, pausa e reseta
+      if (musicaAtual === src && !player.paused) {
+        player.pause();
+        player.currentTime = 0;
+        botoes.forEach(b => b.classList.remove('tocando'));
+        musicaAtual = null;
+        return;
+      }
+
+      // Para qualquer música anterior
+      player.pause();
+      botoes.forEach(b => b.classList.remove('tocando'));
+
+      // Configura e toca a nova
+      player.src = src;
+      player.load();
+      player.play().catch(err => {
+        // Caso o navegador bloqueie (ex: sem interação prévia)
+        console.warn('Autoplay bloqueado? Clique novamente.');
+      });
+
+      // Marca o botão como tocando
+      botao.classList.add('tocando');
+      musicaAtual = src;
+
+      // Quando terminar, remove o destaque
+      player.onended = function() {
+        botao.classList.remove('tocando');
+        musicaAtual = null;
+      };
+    }
+
+    // Evento de clique em cada botão
+    botoes.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const src = this.dataset.musica;
+        if (!src) {
+          alert('Substitua o caminho da música nos atributos data-musica!');
+          return;
+        }
+        tocarMusica(src, this);
+      });
+
+      // Pequeno feedback tátil para mobile
+      btn.addEventListener('touchstart', function() {
+        this.style.opacity = '0.7';
+      }, { passive: true });
+      btn.addEventListener('touchend', function() {
+        this.style.opacity = '1';
+      }, { passive: true });
+    });
+
+    // Instrução no console para ajudar
+    console.log('💡 Lembre-se de substituir os arquivos de música e a imagem de fundo!');
+  })();
+</script>
+
+</body>
+</html>
